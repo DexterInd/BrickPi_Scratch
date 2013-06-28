@@ -71,6 +71,8 @@ BrickPiSetup()
 
 
 def comp(val , case):
+    if val == None or val== 0:
+        return 0
     if case == 1:
         return val-600
     elif case == 2 :
