@@ -19,7 +19,7 @@ ser.baudrate = 500000
 # ser.writeTimeout = 0.0005		
 # ser.timeout = 0.0001
 
-DEBUG = 1	# Remove to hide errors 
+# DEBUG = 1	# Remove to hide errors 
 
 PORT_A = 0
 PORT_B = 1
