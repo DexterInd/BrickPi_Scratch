@@ -9,6 +9,8 @@ Installation
 
 For step by step instructions on how to use Scratch with the BrickPi, please see our [tutorial on getting started with Scratch.](http://www.dexterindustries.com/BrickPi/program-it/scratch/)
 
+Video and text tutorials for installation and operation are provided.
+
 See Also
 ========
 
@@ -17,5 +19,3 @@ See Also
 More information on hardware, firmware, and software can be found on the [BrickPi site](http://www.dexterindustries.com/BrickPi)
 
 The BrickPi can be [purchased here.](http://www.dexterindustries.com/BrickPi.html)
-
-***********************************************************
