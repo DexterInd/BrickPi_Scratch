@@ -1,0 +1,29 @@
+As of May 2014, the latest Dexter Industries image will have these changes already made.  You can download the latest image from our website.
+
+The BrickPi Python and Scratch interfaces are available as a Python module. To install both interfaces, together with their dependencies, open a terminal window and type:
+
+sudo apt-get install -y python-serial \
+python-setuptools python-dev
+sudo easy_install pip
+sudo pip install BrickPi
+
+To use the serial port to communicate with the BrickPi, it has to be available as an input/output (I/O) connection. To allow a connection using the serial bus, the Raspbian configuration needs to be changed slightly. 
+
+Type:
+sudo - s
+Then use the nano editor to edit
+/boot/confi g. txt:
+nano /boot/config. txt
+Go to the end of the file and add:
+init_uart_cl ock=32000000
+
+Then save this file and open /etc/inittab. Find
+T0: 23
+and put a # character in front, to comment it out.
+Then save it. 
+
+Next, open /boot/cmdline.txt and
+remove
+console=ttyAMA0, 115200kgdboc=ttyAMA0, 115200
+
+and save the file. Now reboot the Raspberry Pi.
