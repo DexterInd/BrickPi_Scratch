@@ -1,7 +1,10 @@
 # Jaikrishna
 # Initial Date: June 26, 2013
-# Last Updated: June 27, 2013
-
+#
+# Exception handling and recovery code added
+# Karan Nayan
+# Last Updated: June 3, 2014
+# 
 # This file is for interfacing Scratch with BrickPi
 # The Python program acts as the Bridge between Scratch & BrickPi and must be running for the Scratch program to run.
 # Requirements :
@@ -48,15 +51,16 @@ from BrickPi import *
 
 try:
     s = scratch.Scratch()
-    
+    if s.connected:
+        print "Connected to Scratch successfully"
+	#else:
+    #sys.exit(0)
 except scratch.ScratchError:
     print "Scratch is either not opened or remote sensor connections aren't enabled"
-    sys.exit(0)
+    #sys.exit(0)
     
-if s.connected:
-    print "Connected to Scratch successfully"
-else:
-    sys.exit(0)
+
+
 
 sensor = [ None, False , False , False , False ]
 spec = [ None, 0 , 0 , 0 , 0 ]
@@ -110,8 +114,10 @@ class myThread (threading.Thread):      #This thread is used for continuous tran
 thread1 = myThread(1, "Thread-1", 1)        #Setup and start the thread
 thread1.setDaemon(True)
 
-s.broadcast('READY')
-
+try:
+    s.broadcast('READY')
+except NameError:
+	print "Unable to Broadcast"
 while True:
     try:
         m = s.receive()
@@ -124,8 +130,9 @@ while True:
             BrickPiSetupSensors()
             print "Setting up sensors done"
         elif msg == 'START' :
-            running = True 
-            thread1.start()
+            running = True
+            if thread1.is_alive() == False:
+                thread1.start()
             print "Service Started"
         elif msg == 'STOP' :
             running = False
@@ -207,3 +214,15 @@ while True:
         running= False
         print "Disconnected from Scratch"
         break
+    except (scratch.scratch.ScratchConnectionError,NameError) as e:
+		while True:
+			#thread1.join(0)
+			print "Scratch connection error, Retrying"
+			time.sleep(5)
+			try:
+				s = scratch.Scratch()
+				s.broadcast('READY')
+				print "Connected to Scratch successfully"
+				break;
+			except scratch.ScratchError:
+				print "Scratch is either not opened or remote sensor connections aren't enabled\n..............................\n"
