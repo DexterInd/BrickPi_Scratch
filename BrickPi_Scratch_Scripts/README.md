@@ -1,7 +1,7 @@
 ##Script for debugging the BrickPiScratch python usage
 1. Make both **BrickPiScratchdebug.sh** and **BrickPi_Scratch_Start.sh** execuatable:
 
-  > chmod +x BrickPiScratchdebug.sh
+  > chmod +x BrickPiScratch_debug.sh
 
   > chmod +x BrickPi_Scratch_Start.sh
 
