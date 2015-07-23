@@ -52,11 +52,11 @@ from BrickPi import *
 try:
     s = scratch.Scratch()
     if s.connected:
-        print "Connected to Scratch successfully"
+        print "BrickPi Scratch: Connected to Scratch successfully"
 	#else:
     #sys.exit(0)
 except scratch.ScratchError:
-    print "Scratch is either not opened or remote sensor connections aren't enabled"
+    print "BrickPi Scratch: Scratch is either not opened or remote sensor connections aren't enabled"
     #sys.exit(0)
     
 
@@ -117,7 +117,7 @@ thread1.setDaemon(True)
 try:
     s.broadcast('READY')
 except NameError:
-	print "Unable to Broadcast"
+	print "BrickPi Scratch: Unable to Broadcast"
 while True:
     try:
         m = s.receive()
@@ -128,12 +128,12 @@ while True:
         msg = m[1]
         if msg == 'SETUP' :
             BrickPiSetupSensors()
-            print "Setting up sensors done"
+            print "BrickPi Scratch: Setting up sensors done"
         elif msg == 'START' :
             running = True
             if thread1.is_alive() == False:
                 thread1.start()
-            print "Service Started"
+            print "BrickPi Scratch: Service Started"
         elif msg == 'STOP' :
             running = False
         elif msg == 'UPDATE' :
@@ -212,17 +212,17 @@ while True:
             BrickPi.MotorSpeed[PORT_D] = int(msg[2:])
     except KeyboardInterrupt:
         running= False
-        print "Disconnected from Scratch"
+        print "BrickPi Scratch: Disconnected from Scratch"
         break
     except (scratch.scratch.ScratchConnectionError,NameError) as e:
 		while True:
 			#thread1.join(0)
-			print "Scratch connection error, Retrying"
+			print "BrickPi Scratch: Scratch connection error, Retrying"
 			time.sleep(5)
 			try:
 				s = scratch.Scratch()
 				s.broadcast('READY')
-				print "Connected to Scratch successfully"
+				print "BrickPi Scratch: Connected to Scratch successfully"
 				break;
 			except scratch.ScratchError:
-				print "Scratch is either not opened or remote sensor connections aren't enabled\n..............................\n"
+				print "BrickPi Scratch: Scratch is either not opened or remote sensor connections aren't enabled\n..............................\n"
