@@ -1,10 +1,8 @@
-# Jaikrishna
-# Initial Date: June 26, 2013
-#
-# Exception handling and recovery code added
-# Karan Nayan
-# Last Updated: June 3, 2014
 # 
+# Initial Date: June 26, 2013 - Jaikrishna
+# Update: June 3, 2014 - Karan Nayan- Exception handling and recovery code added
+# Update: March 13, 2016 -	John Cole - EV3 Sensors Integrated.
+## 
 # This file is for interfacing Scratch with BrickPi
 # The Python program acts as the Bridge between Scratch & BrickPi and must be running for the Scratch program to run.
 # Requirements :
@@ -12,11 +10,7 @@
 # The BrickPi python library file (BrickPi.py) must be placed in the same path as this file.
 # Remote Sensor values must be enabled in Scratch
 # This python code must be restarted everytime you need to run a new program. 
-# To run this in python, Open up Terminal and navigate to the path using 'cd' command
-# Then enter:
-#	 python BrickPiScratch.py
-# To exit python, press Ctrl+C or force close the Terminal
-
+# 
 # Broadcasts from Python:
 # 'READY' tells that BrickPi serial setup succeeded. Use 'When I receive READY' to specify starting point of program. 
 # 'UPDATED' tells that sensor values of Scratch has been updated from BrickPi
