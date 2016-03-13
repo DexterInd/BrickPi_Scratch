@@ -1,4 +1,5 @@
-# 
+# BrickPi Interface for Python
+#
 # Initial Date: June 26, 2013 - Jaikrishna
 # Update: June 3, 2014 - Karan Nayan- Exception handling and recovery code added
 # Update: March 13, 2016 -	John Cole - EV3 Sensors Integrated.
