@@ -59,24 +59,17 @@ except scratch.ScratchError:
     print "BrickPi Scratch: Scratch is either not opened or remote sensor connections aren't enabled"
     #sys.exit(0)
     
-# The sensor types below need to be different for EV3 sensors
-# See the Python sensor examples for reference
+
 
 
 sensor = [ None, False , False , False , False ]
 spec = [ None, 0 , 0 , 0 , 0 ]
-
-stype = { 'EV3US' : TYPE_SENSOR_EV3_US_M0,		# Continuous measurement, distance, cm
-'EV3GYRO' : TYPE_SENSOR_EV3_GYRO_M0,			# Angle
-'EV3IR' : TYPE_SENSOR_EV3_INFRARED_M0,			# Proximity, 0 to 100
-'EV3TOUCH' : TYPE_SENSOR_EV3_TOUCH_DEBOUNCE,	# EV3 Touch sensor, debounced.
-'EV3COLOR' : TYPE_SENSOR_EV3_COLOR_M2,
-'ULTRASONIC' : TYPE_SENSOR_ULTRASONIC_CONT ,
+stype = { 'ULTRASONIC' : TYPE_SENSOR_ULTRASONIC_CONT ,
 'TOUCH' : TYPE_SENSOR_TOUCH ,
 'COLOR' : TYPE_SENSOR_COLOR_FULL ,
 'RAW' : TYPE_SENSOR_RAW,
 'TEMP' : TYPE_SENSOR_RAW,
-'FLEX' : TYPE_SENSOR_RAW}   
+'FLEX' : TYPE_SENSOR_RAW}    
 
 BrickPiSetup()
 
