@@ -28,7 +28,7 @@ Below are a few screenshots of various programs using EV3 sensors with the Brick
 See Also
 ========
 
-[BrickPi] is a [Raspberry Pi](http://www.raspberrypi.org) Board that connects [LEGO MINDSTORMS motors and sensors](http://mindstorms.lego.com) to the Raspberry Pi.
+[BrickPi](http://www.dexterindustries.com/brickpi) is a [Raspberry Pi](http://www.raspberrypi.org) Board that connects [LEGO MINDSTORMS motors and sensors](http://mindstorms.lego.com) to the Raspberry Pi.
 
 More information on hardware, firmware, and software can be found on the [BrickPi site](http://www.dexterindustries.com/BrickPi)
 
