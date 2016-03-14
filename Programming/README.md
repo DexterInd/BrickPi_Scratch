@@ -13,10 +13,22 @@ For step by step instructions on how to use Scratch with the BrickPi, please see
 
 Video and text tutorials for installation and operation are provided.
 
+EV3 Sensors
+============
+Below are a few screenshots of various programs using EV3 sensors with the BrickPi and Scratch.
+
+![EV3 Color Sensor](EV3_Color_on_S1.PNG)
+
+![EV3 Gyroscope Sensor](EV3_Gyro_on_S1.PNG)
+
+![EV3 Touch Sensor](EV3_Touch_on_S1.PNG)
+
+![EV3 Ultrasonic Sensor](EV3_Ultrasonic_Sensor_on_S1.PNG)
+
 See Also
 ========
 
-[BrickPi](http://www.dexterindustries.com/BrickPi.html) is a [Raspberry Pi](http://www.raspberrypi.org) Board that connects [LEGO MINDSTORMS motors and sensors](http://mindstorms.lego.com) to the Raspberry Pi.
+[BrickPi] is a [Raspberry Pi](http://www.raspberrypi.org) Board that connects [LEGO MINDSTORMS motors and sensors](http://mindstorms.lego.com) to the Raspberry Pi.
 
 More information on hardware, firmware, and software can be found on the [BrickPi site](http://www.dexterindustries.com/BrickPi)
 
