@@ -43,6 +43,14 @@
 
 import scratch,sys,threading,math
 from BrickPi import *
+import ir_receiver_check
+
+if ir_receiver_check.check_ir():
+	print "Disable IR receiver before continuing!"
+	print "Disable IR receiver before continuing!"
+	print "Disable IR receiver before continuing!"
+	print "Disable IR receiver before continuing!"	
+	exit() 
 
 try:
     s = scratch.Scratch()
