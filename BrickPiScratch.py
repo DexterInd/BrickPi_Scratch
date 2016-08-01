@@ -25,16 +25,21 @@
 
 # Setting Sensor type:
 
-# S1 ULTRASONIC 
-# S2 TOUCH
-# S3 RAW
-# S4 COLOR
-# S3 FLEX
-# S5 TEMP
-# Note: Only these sensors are supported as of now. The first 4 are lego products while the last 2 are from DexterIndustries
+# ULTRASONIC 
+# TOUCH
+# RAW
+# COLOR
+# EV3 ULTRASONIC
+# EV3 TOUCH
+# EV3 COLOR
+# EV3 GYRO
+# EV3 INFRARED
+# FLEX
+# TEMP
+# Note: Only these sensors are supported as of now. They are lego products except for the last 2 which are from DexterIndustries
 
 # Enabling and Running Motors:
-
+# Enabling motors is no longer necessary
 # MA E - Enable motor A
 # MB D - Disable motor B
 # MA 100 - Set MotorA speed to 100
@@ -68,6 +73,8 @@ except scratch.ScratchError:
 
 sensor = [ None, False , False , False , False ]
 spec = [ None, 0 , 0 , 0 , 0 ]
+running = False
+sensorbroadcasts=["S1","S2","S3","S4"]
 
 stype = { 'EV3US' : TYPE_SENSOR_EV3_US_M0,		# Continuous measurement, distance, cm
 'EV3GYRO' : TYPE_SENSOR_EV3_GYRO_M0,			# Angle
@@ -86,6 +93,10 @@ if BrickPiSetup()==0:
 else:
     print "serial connection did not start"
     sys.exit()
+
+# activate all motors by default
+BrickPi.MotorEnable = [1,1,1,1]
+BrickPi.MotorSpeed  = [0,0,0,0]
 
 
 def comp(val , case):
@@ -112,7 +123,7 @@ def comp(val , case):
         temp-=273
         return round(temp,2)
 
-running = False
+
 
 class myThread (threading.Thread):      #This thread is used for continuous transmission to BPi while main thread takes care of Rx/Tx Broadcasts of Scratch
     def __init__(self, threadID, name, counter):
@@ -124,19 +135,12 @@ class myThread (threading.Thread):      #This thread is used for continuous tran
         print "starting thread"
         while running:
             BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
+            #print BrickPi.Sensor
             time.sleep(.2)              # sleep for 200 ms
 
 thread1 = myThread(1, "Thread-1", 1)        #Setup and start the thread
 thread1.setDaemon(True)
-thread1.start()  # this removes the need for the START broadcast
-running = True
-print "BrickPi Scratch: Service Started"
 
-sensorbroadcasts=["S1","S2","S3","S4"]
-
-# activate all motors by default
-BrickPi.MotorEnable = [1,1,1,1]
-BrickPi.MotorSpeed  = [0,0,0,0]
 
 try:
     s.broadcast('READY')
@@ -152,8 +156,10 @@ while True:
         msg = m[1].upper()
         if msg == 'SETUP' :
             BrickPiSetupSensors()
+            running = True
+            if thread1.is_alive() == False:
+                thread1.start()  # this removes the need for the START broadcast
             print "BrickPi Scratch: Setting up sensors done"
-            #print BrickPi.Sensor,BrickPi.SensorType
         elif msg == 'START' :
             running = True
             if thread1.is_alive() == False:
