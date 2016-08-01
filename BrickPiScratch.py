@@ -27,13 +27,13 @@
 
 # ULTRASONIC 
 # TOUCH
-# RAW
 # COLOR
 # EV3 ULTRASONIC
 # EV3 TOUCH
 # EV3 COLOR
 # EV3 GYRO
 # EV3 INFRARED
+# RAW
 # FLEX
 # TEMP
 # Note: Only these sensors are supported as of now. They are lego products except for the last 2 which are from DexterIndustries
@@ -79,7 +79,8 @@ spec = [ None, 0 , 0 , 0 , 0 ]
 running = False
 sensorbroadcasts=["S1","S2","S3","S4"]
 
-stype = { 'EV3US' : TYPE_SENSOR_EV3_US_M0,		# Continuous measurement, distance, cm
+stype = { 
+'EV3US' : TYPE_SENSOR_EV3_US_M0,		# Continuous measurement, distance, cm
 'EV3GYRO' : TYPE_SENSOR_EV3_GYRO_M0,			# Angle
 'EV3IR' : TYPE_SENSOR_EV3_INFRARED_M0,			# Proximity, 0 to 100
 'EV3TOUCH' : TYPE_SENSOR_EV3_TOUCH_DEBOUNCE,	# EV3 Touch sensor, debounced.
@@ -89,7 +90,8 @@ stype = { 'EV3US' : TYPE_SENSOR_EV3_US_M0,		# Continuous measurement, distance, 
 'COLOR' : TYPE_SENSOR_COLOR_FULL ,
 'RAW' : TYPE_SENSOR_RAW,
 'TEMP' : TYPE_SENSOR_RAW,
-'FLEX' : TYPE_SENSOR_RAW}   
+'FLEX' : TYPE_SENSOR_RAW
+}   
 
 if BrickPiSetup()==0:
     print "serial connection ok"
@@ -135,11 +137,17 @@ def comp(val , case):
 #         self.name = name
 #         self.counter = counter
 #     def run(self):
-#         print "starting thread"
-#         while running:
-#             BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
-#             #print BrickPi.Sensor
-#             time.sleep(.2)              # sleep for 200 ms
+        # print "starting thread"
+        # while running:
+        #     BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
+        #     # for i in range(4):
+        #     #     if sensor[i]:
+        #     #         if spec[i]:
+        #     #             s.sensorupdate({sensorbroadcasts[i] : comp(BrickPi.Sensor[PORT_1+i],spec[i])})
+        #     #         else:                
+        #     #             s.sensorupdate({sensorbroadcasts[i] : BrickPi.Sensor[PORT_1+i]})
+        #     #print BrickPi.Sensor
+        #     time.sleep(.2)              # sleep for 200 ms
 
 # thread1 = myThread(1, "Thread-1", 1)        #Setup and start the thread
 # thread1.setDaemon(True)
@@ -163,6 +171,7 @@ while True:
             # if thread1.is_alive() == False:
             #     thread1.start()  # this removes the need for the START broadcast
             print "BrickPi Scratch: Setting up sensors done"
+            print BrickPi.SensorType
         elif msg == 'START' :
             # running = True
             # if thread1.is_alive() == False:
