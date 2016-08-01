@@ -46,7 +46,10 @@
 # MB -50 - Set MotorB speed to -100
 
 
-import scratch,sys,threading,math
+import scratch,sys
+import math
+# import threading
+
 from BrickPi import *
 import ir_receiver_check
 
@@ -125,21 +128,21 @@ def comp(val , case):
 
 
 
-class myThread (threading.Thread):      #This thread is used for continuous transmission to BPi while main thread takes care of Rx/Tx Broadcasts of Scratch
-    def __init__(self, threadID, name, counter):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-        self.counter = counter
-    def run(self):
-        print "starting thread"
-        while running:
-            BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
-            #print BrickPi.Sensor
-            time.sleep(.2)              # sleep for 200 ms
+# class myThread (threading.Thread):      #This thread is used for continuous transmission to BPi while main thread takes care of Rx/Tx Broadcasts of Scratch
+#     def __init__(self, threadID, name, counter):
+#         threading.Thread.__init__(self)
+#         self.threadID = threadID
+#         self.name = name
+#         self.counter = counter
+#     def run(self):
+#         print "starting thread"
+#         while running:
+#             BrickPiUpdateValues()       # Ask BrickPi to update values for sensors/motors
+#             #print BrickPi.Sensor
+#             time.sleep(.2)              # sleep for 200 ms
 
-thread1 = myThread(1, "Thread-1", 1)        #Setup and start the thread
-thread1.setDaemon(True)
+# thread1 = myThread(1, "Thread-1", 1)        #Setup and start the thread
+# thread1.setDaemon(True)
 
 
 try:
@@ -156,18 +159,19 @@ while True:
         msg = m[1].upper()
         if msg == 'SETUP' :
             BrickPiSetupSensors()
-            running = True
-            if thread1.is_alive() == False:
-                thread1.start()  # this removes the need for the START broadcast
+            # running = True
+            # if thread1.is_alive() == False:
+            #     thread1.start()  # this removes the need for the START broadcast
             print "BrickPi Scratch: Setting up sensors done"
         elif msg == 'START' :
-            running = True
-            if thread1.is_alive() == False:
-                thread1.start()
+            # running = True
+            # if thread1.is_alive() == False:
+            #     thread1.start()
             print "BrickPi Scratch: Service Started"
         elif msg == 'STOP' :
             running = False
         elif msg == 'UPDATE' :
+            BrickPiUpdateValues()
             for i in range(4):
                 if sensor[i]:
                     if spec[i]:
