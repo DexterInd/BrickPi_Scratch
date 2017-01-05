@@ -1,6 +1,10 @@
 BrickPi Scratch Code and Examples
 ===================
 
+This code [has been moved here.](https://github.com/DexterInd/BrickPi/tree/master/Software/Scratch)
+
+============
+
 This repository contains a Scratch library for BrickPi and Raspberry Pi, allowing you to use Scratch and LEGO Mindstorms NXT motors and sensors.
 These files have been made available online through a [Creative Commons Attribution-ShareAlike 3.0](http://creativecommons.org/licenses/by-sa/3.0/) license.
 
