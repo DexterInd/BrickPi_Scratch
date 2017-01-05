@@ -1,7 +1,7 @@
 BrickPi Scratch Code and Examples
 ===================
 
-This code [has been moved here.](https://github.com/DexterInd/BrickPi/tree/master/Software/Scratch)
+This code [has been moved here.](https://github.com/DexterInd/BrickPi/tree/master/Software/BrickPi_Scratch)
 
 ============
 
